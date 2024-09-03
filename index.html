@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>read katz!</title>
+    </head>
+    <body>
+        <div class="nav">
+            <!-- the nav bar -->
+            <div class="logo">
+                <!-- logo -->
+                <h1>KATZ</h1>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <!-- links on the nav -->
+                <a href="#">read</a>
+                <a href="#">write</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="button">
+                <!-- subscribe -->
+                <button><a href="#subscribe">subscribe</a></button>
+            </div>
+        </div>
+        <div class="banner">
+            <!-- banner image -->
+            <img src="banner.png" />
+        </div>
+        <div class="open-text">
+            <!-- large opening text -->
+            <strong>the lit mag you<br>
+            never knew you needed...</strong>
+        </div>
+        <div class="contribute-wrapper">
+            <!-- contribute section -->
+            <h1>contribute</h1>
+            <div class="contribute">
+                <!-- contribute card -->
+                 <div class="contribute-card-elements">
+                    <form>
+                        <input type="text" placeholder="name"/>
+                        <input type="email"  placeholder="email"/>
+                        <div class="checkbox-container">
+                            <input type="checkbox" value="check"/>
+                            <label for="write">  Yes, i want to write!</label>
+                        </div>
+                        <button type="submit">submit</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="subscribe-wrapper" id="subscribe">
+            <!-- subscribe section -->
+             <h1>subscribe</h1>
+             <div class="subscribe">
+                <!-- subscribe card -->
+                <div class="subscribe-card-elements">
+                    <form>
+                        <p><strong>be the first to find out <br>
+                        when we launch!</strong></p>
+                        <input type="email" placeholder="email" />
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
+             </div>
+        </div>
+        <footer>
+            <!-- the footer and its properties -->
+             <div class="footer-links">
+                <div class="name">
+                    <h1><strong>KATZ</strong></h1>
+                </div>
+                <ul class="socials">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024. All Rights Reserved</p>
+            </div>
+        </footer>
+        <script>
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+
+            hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+            const elements = document.querySelectorAll('.open-text, .contribute-wrapper');
+            const options = {
+                root: null,
+                threshold: 0.1,
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        </script>
+    </body>
+</html>
